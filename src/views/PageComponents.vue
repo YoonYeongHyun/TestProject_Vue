@@ -1,0 +1,153 @@
+<template>
+    <div id="appBox">
+        <div id="navBox">
+            <ul>
+                <li>
+                    <button v-on:click="compo1">컴포넌트1</button>
+                </li>
+                <li>
+                    <button v-on:click="compo2">컴포넌트2</button>
+                </li>
+                <li>
+                    <button v-on:click="compo3">컴포넌트3</button>
+                </li>
+                <li>
+                    <button v-on:click="compo4">컴포넌트4</button>
+                </li>
+                <li>
+                    <button v-on:click="compo5">컴포넌트5</button>
+                </li>
+            </ul>
+
+        </div>
+        <div id="compoContainer">
+            <div v-show="compNum == 1">
+                <ComponentOne/>
+            </div>
+        
+            <div v-show="compNum == 2">
+                <ComponentTwo/>
+            </div>
+
+            <div v-show="compNum == 3">
+                <ComponentThree/>
+            </div>
+
+            <div v-show="compNum == 4">
+                <ComponentFour/>
+            </div>
+
+            <div v-show="compNum == 5">
+                <ComponentFive/>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+
+    import ComponentOne from '@/components/ComponentOne.vue';
+    import ComponentTwo from '@/components/ComponentTwo.vue';
+    import ComponentThree from '@/components/ComponentThree.vue';
+    import ComponentFour from '@/components/ComponentFour.vue';
+    import ComponentFive from '@/components/ComponentFive.vue';
+    export default {
+        el: "#appBox",
+        components: {
+            ComponentOne,
+            ComponentTwo,
+            ComponentThree,
+            ComponentFour,
+            ComponentFive,
+        },
+        data: function () {
+            log("시작")
+
+            return {
+                styleObject: {
+                },
+                compNum : 1,
+            }
+        },
+        methods: {
+            compo1: function () {
+                log("실행:컴포넌트1");
+                this.compNum = 1;
+                log("this.compNum : " + this.compNum)
+            },
+
+            compo2: function () {
+                log("실행:컴포넌트2");
+                this.compNum = 2;
+                log("this.compNum : " + this.compNum)
+            },
+
+            compo3: function () {
+                log("실행:컴포넌트3");
+                this.compNum = 3;
+                log("this.compNum : " + this.compNum)
+            },
+
+            compo4: function () {
+                log("실행:컴포넌트4");
+                this.compNum = 4;
+                log("this.compNum : " + this.compNum)
+            },
+
+            compo5: function () {
+                log("실행:컴포넌트5");
+                this.compNum = 5;
+                log("this.compNum : " + this.compNum)
+            }
+        }
+    }
+    
+    function log(str) {
+        console.log(str)
+    }
+
+</script>
+
+<style>
+    h1{
+        text-align: center;
+    }
+</style>
+
+<style scoped>
+
+    ul{
+        padding-left: 30px;
+    }
+
+    li{
+        margin: 10px;
+        text-align: left;
+    }
+
+    #appBox{
+        vertical-align: top;
+        width: 1304px;
+        height: 250px;;
+        text-align: left;
+        margin: 0 auto;
+    }
+
+    #navBox{
+        float: left;
+        width: 200px;
+        height: 200px;
+        border: 1px solid #aaa;
+        border-radius: 20px;
+    }
+
+    #compoContainer{
+        display: inline-block;
+        width: 1000px;
+        height: 700px;
+        border: 1px solid #aaa;
+        border-radius: 20px;
+        margin-left: 40px;
+    }
+
+</style>
