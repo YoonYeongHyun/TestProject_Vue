@@ -38,7 +38,7 @@
 </template>
 
 <script>
-    import axios from 'axios';
+
     export default {
         el: "#app3",
         data: function () {
@@ -58,6 +58,7 @@
                 id : ""
             }
         },
+        
         methods: {
             axiosGet: function () {
                 var getURL = "https://reqres.in/api/users?page=" + this.page + "&per_page=" + this.per_page + "&id=" + this.id;
@@ -67,7 +68,7 @@
                 }
 
                 log("악시오스(Get)");
-                axios
+                this.axios
                     //.get("https://reqres.in/api/users?page=" + 1 + "&per_page=&id=")
                     .get(getURL)
                     .then(res => {
@@ -100,7 +101,7 @@
 
             axiosPost: function () {
                 log("악시오스(Post)");
-                axios
+                this.axios
                     .post("https://reqres.in/api/users", {
                         page: 1
                     })
@@ -118,19 +119,22 @@
             },
         }
     }
+
     function log(str) {
         console.log(str)
     }
+
 </script>
 
 <style scoped>
+
     .btnBox{
         width: 600px;
         margin: 10px 30px;
         text-align: right;
         display: inline-block;
-
     }
+
     .btnBox input{
         width: 30px;
         height: 20px;
@@ -147,7 +151,7 @@
     .btnBox strong{
         font-size: 1em;
     }
-
+    /*
     table{
         margin: auto;
         border-collapse: collapse;
@@ -156,5 +160,42 @@
     th, td{
         border: 1px solid #000;
     }
+    */
+/* Style for the entire table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
 
+/* Style for table headers */
+th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Style for table rows */
+tr {
+  background-color: #fff;
+}
+
+/* Style for alternating table rows */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Style for table cells */
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Hover effect on table rows */
+tr:hover {
+  background-color: #ccc;
+}
 </style>

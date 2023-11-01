@@ -71,33 +71,23 @@
         },
         methods: {
             compo1: function () {
-                log("실행:컴포넌트1");
                 this.compNum = 1;
-                log("this.compNum : " + this.compNum)
             },
 
             compo2: function () {
-                log("실행:컴포넌트2");
                 this.compNum = 2;
-                log("this.compNum : " + this.compNum)
             },
 
             compo3: function () {
-                log("실행:컴포넌트3");
                 this.compNum = 3;
-                log("this.compNum : " + this.compNum)
             },
 
             compo4: function () {
-                log("실행:컴포넌트4");
                 this.compNum = 4;
-                log("this.compNum : " + this.compNum)
             },
 
             compo5: function () {
-                log("실행:컴포넌트5");
                 this.compNum = 5;
-                log("this.compNum : " + this.compNum)
             }
         }
     }
@@ -128,7 +118,6 @@
     #appBox{
         vertical-align: top;
         width: 1304px;
-        height: 250px;;
         text-align: left;
         margin: 0 auto;
     }
@@ -144,7 +133,7 @@
     #compoContainer{
         display: inline-block;
         width: 1000px;
-        height: 700px;
+        height: 800px;
         border: 1px solid #aaa;
         border-radius: 20px;
         margin-left: 40px;
