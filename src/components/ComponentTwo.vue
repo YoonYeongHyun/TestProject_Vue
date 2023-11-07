@@ -19,8 +19,10 @@
     </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import axios from 'axios';
+import { defineComponent } from 'vue'
+export default defineComponent({
     el: "#componentTwo",
     data: function () {
         log("시작")
@@ -35,13 +37,13 @@ export default {
             updated_at : "",
             url : "",
             value : "",
-            selectedOption : ""
+            selectedOption : "",
+            axios: axios
         }
     },
 
     mounted() {
         this.apiCategory();
-
     },
 
     methods: {
@@ -50,7 +52,7 @@ export default {
             var url = "/apiOne?textUrl=https://api.chucknorris.io/jokes/categories&method=GET";
             this.axios
             .get(url)
-            .then(res => {
+            .then((res:any) => {
                 log("통신성공");
                 log(res.data);
                 this.options = res.data;
@@ -62,7 +64,7 @@ export default {
             var url = "/apiOne?textUrl=https://api.chucknorris.io/jokes/random?category=" + this.selectedOption + "&method=GET";
             this.axios
                 .get(url)
-                .then(res => {
+                .then((res: any) => {
                     log("통신성공");
                     log(res.data);
                     
@@ -76,8 +78,8 @@ export default {
                 })
         }
     }
-}
-function log(str) {
+})
+function log(str: String) {
     console.log(str)
 }
 </script>

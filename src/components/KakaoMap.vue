@@ -16,7 +16,7 @@
     <p id="latLngText"></p>
 </template>
 
-<script>
+<script >
     var latlng;
     var lat;
     var long;
@@ -26,7 +26,6 @@
         name: "KakaoMap",
         el: "#map",
         data: function () {
-            log("시작");
             return {
                 map: null,
                 lat : 37.47882954652135,
@@ -130,12 +129,6 @@
                     }
                 });
             },
-
-            btn1(){
-                log(lat);
-                log(long);
-                log(this);
-            }
         }
     }
 

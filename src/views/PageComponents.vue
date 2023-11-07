@@ -44,14 +44,16 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 
     import ComponentOne from '@/components/ComponentOne.vue';
     import ComponentTwo from '@/components/ComponentTwo.vue';
     import ComponentThree from '@/components/ComponentThree.vue';
     import ComponentFour from '@/components/ComponentFour.vue';
     import ComponentFive from '@/components/ComponentFive.vue';
-    export default {
+    import { defineComponent } from 'vue'
+    
+    export default defineComponent({
         el: "#appBox",
         components: {
             ComponentOne,
@@ -62,37 +64,34 @@
         },
         data: function () {
             log("시작")
-
             return {
-                styleObject: {
-                },
-                compNum : 1,
+                compNum : 1 as any
             }
         },
         methods: {
-            compo1: function () {
+            compo1() {
                 this.compNum = 1;
             },
 
-            compo2: function () {
+            compo2() {
                 this.compNum = 2;
             },
 
-            compo3: function () {
+            compo3() {
                 this.compNum = 3;
             },
 
-            compo4: function () {
+            compo4() {
                 this.compNum = 4;
             },
 
-            compo5: function () {
+            compo5() {
                 this.compNum = 5;
             }
         }
-    }
+    })
     
-    function log(str) {
+    function log(str: String){
         console.log(str)
     }
 
