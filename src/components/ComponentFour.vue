@@ -10,8 +10,7 @@
             <div class="imgContent">
                 <div v-for="(file, index) in files" :key="index" class="imgWrapper">
                     <div class="imgDeleteBtn" @click="imgDelete" :name="file.number">삭제</div>
-                    <img class="realImg" :src="file.preview" />
-                </div>
+                    <img class="realImg" :src="file.preview" /></div>
             </div>
             <div class="btnBox">
                 <input type="file" id="file" ref="files" @change="moreUpload" multiple />
@@ -22,7 +21,9 @@
 
 <script>
 export default {
+
     el: "#componentFour",
+
     data: function () {
         log("시작")
         return {
@@ -31,8 +32,13 @@ export default {
             uploadImageIndex: 0
         }
     },
+
     methods: {
+
         imgUpload() {
+            log('업로드');
+            log(this.$refs);
+            log(this.$refs.files);
             log(this.$refs.files.files);
             let num = -1;
             for (let i = 0; i < this.$refs.files.files.length; i++) {
@@ -51,9 +57,13 @@ export default {
         },
 
         moreUpload() {
+            log('업로드');
+            log(this.$refs);
+            log(this.$refs.files);
             log(this.$refs.files.files);
 
             let num = -1;
+            let fileArr = document.getElementById("files").files
             for (let i = 0; i < this.$refs.files.files.length; i++) {
                 log(this.uploadImageIndex);
                 this.files = [
@@ -65,11 +75,13 @@ export default {
                     }
                 ];
                 num = i;
+                 window.dataTransfer.items.add(fileArr[i])
             }
             this.uploadImageIndex = this.uploadImageIndex + num + 1;
 
             log(this.files);
         },
+
         imgDelete(e) {
             const name = e.target.getAttribute('name');
             this.files = this.files.filter(data => data.number !== Number(name));
@@ -85,7 +97,7 @@ function log(str) {
     .imgContent{
         display: inline-block;
         width: 960px;
-        height: 500px;
+        height: 350px;
         padding: 30px 20px;
         overflow: auto;
         white-space: nowrap;
@@ -96,17 +108,29 @@ function log(str) {
         position: relative;
         border: 2px solid black;
         margin: auto 20px;
-
+        height: 304px;
+        width: 304px;
+        padding: 25px;
+        box-sizing: border-box;
+        background-color: #aaa;
     }
 
     .imgDeleteBtn{
         position: absolute;
+        bottom: 20px;
+        right: 20px;
         z-index: 100;
+        border: 1px solid black;
+        border-radius: 10px;
+        background: #eee;
+        font-size: 1.2em;
+        font-weight: bolder;
+        padding: 5px 10px;
     }
 
     .realImg{
-        position: static;
-        max-height: 300px;
+        height: 250px !important;
+        width: 250px !important;
     }
 
 </style>

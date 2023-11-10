@@ -30,7 +30,7 @@
                 map: null,
                 lat : 37.47882954652135,
                 long : 127.00622382693767,
-                searchTxt : ""
+                searchTxt : "",
             };
         },
 
