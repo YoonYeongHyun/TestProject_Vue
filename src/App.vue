@@ -1,6 +1,6 @@
 <template>
-      <MainHeader/>
-      <router-view/>
+  <MainHeader />
+  <router-view />
 </template>
 
 <script lang="ts">
@@ -11,7 +11,6 @@ import MainHeader from './components/MainHeader.vue';
   components: {
     HelloWorld,
     MainHeader,
-    
   },
 })
 export default class App extends Vue {
@@ -26,4 +25,11 @@ export default class App extends Vue {
   text-align: center;
   color: #2c3e50;
 }
+
+button, input, select, textarea {
+    border-style: solid !important;
+    border: 1px soild black;
+    border-width: 1px !important; 
+}
+
 </style>

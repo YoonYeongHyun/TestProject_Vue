@@ -3,21 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 8081  --open" ,
+    "serve": "vue-cli-service serve --port 8081  --open",
     "build": "vue-cli-service build --watch",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@mdi/font": "5.9.55",
     "axios": "^1.5.1",
     "core-js": "^3.8.3",
+    "roboto-fontface": "*",
     "vue": "^3.2.13",
     "vue-class-component": "^8.0.0-0",
+    "vue-number-animation": "^1.1.2",
     "vue-router": "^4.2.5",
-    "vuetify": "^3.3.22"
+    "vuebar": "^0.0.20",
+    "vuetify": "^3.3.22",
+    "webfontloader": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@types/jquery": "^3.5.29",
+    "@types/webfontloader": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",
@@ -28,7 +35,8 @@
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "typescript": "~4.5.5",
-    "vue-cli-plugin-vuetify": "~2.5.8"
+    "vue-cli-plugin-vuetify": "~2.5.8",
+    "webpack-plugin-vuetify": "^2.0.0-alpha.0"
   },
   "eslintConfig": {
     "root": true,

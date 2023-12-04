@@ -3,7 +3,7 @@
         <h1>사진 등록</h1>
         <div v-if="!files.length" class="contnetNoneBox">
             <div class="btnBox">
-                <input type="file" id="file" ref="files" @change="imgUpload" multiple />
+                <input type="file" id="fileInput1" ref="files" @change="imgUpload" multiple />
             </div>
         </div>
         <div v-else class="contnetExistBox">
@@ -13,7 +13,7 @@
                     <img class="realImg" :src="file.preview" /></div>
             </div>
             <div class="btnBox">
-                <input type="file" id="file" ref="files" @change="moreUpload" multiple />
+                <input type="file" id="fileInput2" ref="files" @change="moreUpload" multiple />
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@ export default {
             log(this.$refs.files.files);
 
             let num = -1;
-            let fileArr = document.getElementById("files").files
+            let fileArr = document.getElementById("fileInput2").files;
             for (let i = 0; i < this.$refs.files.files.length; i++) {
                 log(this.uploadImageIndex);
                 this.files = [
@@ -132,5 +132,4 @@ function log(str) {
         height: 250px !important;
         width: 250px !important;
     }
-
 </style>

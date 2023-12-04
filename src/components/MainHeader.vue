@@ -3,7 +3,8 @@
         <div id="nav">
             <router-link to="/">Home</router-link> |
             <router-link to="/PageAxios">Axios</router-link> |
-            <router-link to="/PageComponents">Components</router-link>
+            <router-link to="/PageComponents">Components</router-link> |
+            <router-link to="/TempPage">TempPage</router-link>
         </div>
     </header>
     <hr />

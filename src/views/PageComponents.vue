@@ -17,6 +17,9 @@
                 <li>
                     <button v-on:click="compo5">컴포넌트5</button>
                 </li>
+                <li>
+                    <button v-on:click="compo6">컴포넌트6</button>
+                </li>
             </ul>
 
         </div>
@@ -40,6 +43,10 @@
             <div v-show="compNum == 5">
                 <ComponentFive/>
             </div>
+            
+            <div v-show="compNum == 6">
+                <ComponentSix/>
+            </div>
         </div>
     </div>
 </template>
@@ -51,6 +58,7 @@
     import ComponentThree from '@/components/ComponentThree.vue';
     import ComponentFour from '@/components/ComponentFour.vue';
     import ComponentFive from '@/components/ComponentFive.vue';
+    import ComponentSix from '@/components/ComponentSix.vue';
     import { defineComponent } from 'vue'
     
     export default defineComponent({
@@ -61,6 +69,7 @@
             ComponentThree,
             ComponentFour,
             ComponentFive,
+            ComponentSix,
         },
         data: function () {
             log("시작")
@@ -87,8 +96,12 @@
 
             compo5() {
                 this.compNum = 5;
+            },
+
+            compo6() {
+                this.compNum = 6;
             }
-        }
+            }
     })
     
     function log(str: String){

@@ -19,7 +19,12 @@ const routes = [
   {
     path: '/PageComponents',
     name: 'PageComponents',
-    component: () => import(/**/'../views/PageComponents.vue')
+    component: () => import('../views/PageComponents.vue')
+  },
+  {
+    path: '/TempPage',
+    name: 'TempPage',
+    component: () => import('../views/TempPage.vue')
   },
   {
     path: "/:pathMatch(.*)*",

@@ -1,6 +1,7 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
+
   // npm run build 타겟 디렉토리 -> 해당 경로에 vue 빌드 출력물 생성됨
   outputDir: '../backend/src/main/resources/static',
 
@@ -8,4 +9,10 @@ module.exports = defineConfig({
   devServer: {
     proxy: 'http://localhost:8081', //서버 프로젝트 포트번호와 동일할 것
   },
+
+  pluginOptions: {
+    vuetify: {
+			// https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vuetify-loader
+		}
+  }
 })

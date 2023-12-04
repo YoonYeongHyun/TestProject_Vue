@@ -106,7 +106,7 @@ function log(str: String) {
     }
 
     .post-container {
-        height: 150px;    
+        min-height: 150px;    
         background-color: #fff;
         border: 1px solid #ddd;
         border-radius: 5px;

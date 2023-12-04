@@ -24,7 +24,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(val, index) in tmp_arr" v-bind:key="val">
+                    <tr v-for="(val, index) in tmp_arr" v-bind:key="val" draggable="true" 
+                        v-on:dragover="dragOver" v-on:dragstart="dragStart" v-on:dragend="dragEnd" v-on:dragenter="dragEnter">
                         <td>{{ index + 1  }}</td>
                         <td v-for="(index) in th_arr" v-bind:key="index">{{ (val[index])}}</td>
                     </tr>
@@ -38,7 +39,6 @@
 </template>
 
 <script>
-
     export default {
         el: "#app3",
         data: function () {
@@ -55,27 +55,21 @@
                 s_flag : false,
                 page : "",
                 per_page : "",
-                id : ""
+                id : "",
+                drag_flag : false
             }
         },
         
         methods: {
             axiosGet: function () {
                 var getURL = "https://reqres.in/api/users?page=" + this.page + "&per_page=" + this.per_page + "&id=" + this.id;
-                console.log(getURL);
                 if(this.id == '0'){
                     this.id = 1;
                 }
-
-                log("악시오스(Get)");
                 this.axios
                     //.get("https://reqres.in/api/users?page=" + 1 + "&per_page=&id=")
                     .get(getURL)
                     .then(res => {
-                        log("성공");
-                        log(Array.isArray(res.data.data));
-                        log("배열 사이즈 : " + res.data.data.length);
-                        
                         this.tmp_arr = [];
                         this.th_arr = [];
                         this.td_arr = [];
@@ -100,13 +94,11 @@
             },
 
             axiosPost: function () {
-                log("악시오스(Post)");
                 this.axios
                     .post("https://reqres.in/api/users", {
                         page: 1
                     })
                     .then(res => {
-                        log("성공");
                         this.netSource = JSON.stringify(res);
                         this.post_obj = res.data;
                         this.table_flag = false;
@@ -117,6 +109,46 @@
                         log(err);
                     });
             },
+
+            dragStart: function (event) {
+                if(event.target.localName ==='tr'){
+                    event.target.classList.add('dragging');
+                    this.drag_flag = true;
+                }
+            },
+            
+            dragEnd: function (event) {
+                if (event.target.localName === 'tr') {
+                    event.target.classList.remove('dragging');
+                }
+                this.drag_flag = false;
+            },
+
+            dragEnter: function (event) {
+
+                var targetClass = event.target.parentElement.classList;
+
+                if (targetClass.contains('dragging')){
+                    return;
+                }
+                    
+                var currentTr = document.getElementsByClassName('dragging');
+                var eventY = event.pageY - window.scrollY;
+                var targetMidY = (event.target.getBoundingClientRect().top + event.target.getBoundingClientRect().bottom)/2;
+                if(this.drag_flag){
+                    if(targetMidY >= eventY){
+                        event.target.parentElement.after(currentTr.item(0));
+                        log(event);
+                        log(event.target.getBoundingClientRect().top);
+                        log(eventY)
+                    } else{
+                        event.target.parentElement.before(currentTr.item(0));
+                        log(event);
+                        log(event.target.getBoundingClientRect().bottom);
+                        log(eventY)
+                    }
+                }
+            }
         }
     }
 
@@ -151,6 +183,16 @@
     .btnBox strong{
         font-size: 1em;
     }
+
+    .dragging{
+        opacity: 0.6;
+        font-weight: bold; 
+    }
+
+    .table_box{
+        text-align: center;
+    }
+
     /*
     table{
         margin: auto;
@@ -161,41 +203,43 @@
         border: 1px solid #000;
     }
     */
-/* Style for the entire table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: Arial, sans-serif;
-}
 
-/* Style for table headers */
-th {
-  background-color: #f2f2f2;
-  color: #333;
-  font-weight: bold;
-  text-align: left;
-  padding: 10px;
-  border: 1px solid #ddd;
-}
+    /* Style for the entire table */
+    .table {
+        display: inline-block;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+    }
 
-/* Style for table rows */
-tr {
-  background-color: #fff;
-}
+    /* Style for table headers */
+    th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    }
 
-/* Style for alternating table rows */
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+    /* Style for table rows */
+    tr {
+    background-color: #fff;
+    }
 
-/* Style for table cells */
-td {
-  padding: 10px;
-  border: 1px solid #ddd;
-}
+    /* Style for alternating table rows */
+    tr:nth-child(even) {
+    background-color: #f2f2f2;
+    }
 
-/* Hover effect on table rows */
-tr:hover {
-  background-color: #ccc;
-}
+    /* Style for table cells */
+    td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    }
+
+    /* Hover effect on table rows */
+    tr:hover {
+    background-color: #ccc;
+    }
+
 </style>

@@ -75,6 +75,8 @@
                     latLngTextElement.innerText = latLngText;
                     marker.setPosition(latlng);
                     log(mouseEvent);
+                    log(this.searchTxt);
+                    log(mouseEvent);
                 });
             },
 
@@ -125,7 +127,7 @@
                         latLngText = '검색한 위치의 위도는 ' + result[0].y + ' 이고, '
                             + '경도는 ' + result[0].x + ' 입니다';
                         var latLngTextElement = document.getElementById("latLngText");
-                        latLngTextElement.innerText = latLngText;
+                            latLngTextElement.innerText = latLngText;
                     }
                 });
             },
